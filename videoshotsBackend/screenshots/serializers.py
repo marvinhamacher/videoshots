@@ -1,6 +1,6 @@
 
 from rest_framework import serializers
-from screenshots.models import Screenshot
+from .models import Screenshot
 from drf_extra_fields.fields import Base64ImageField
 
 

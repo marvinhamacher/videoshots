@@ -10,7 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
+from datetime import timedelta
 from pathlib import Path
+from typing import List, Tuple
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'django_minio_backend',
     "screenshots.apps.ScreenshotsConfig"
 ]
 
@@ -57,6 +60,26 @@ CORS_ALLOW_HEADERS = "access-control-allow-origin"
 CORS_ORIGIN_WHITELIST = (
     "http://localhost:4200",
 )
+
+MINIO_ENDPOINT = 'localhost:9000'
+#MINIO_EXTERNAL_ENDPOINT = "external-minio.your-company.co.uk"  # Default is same as MINIO_ENDPOINT
+MINIO_EXTERNAL_ENDPOINT_USE_HTTPS = False  # Default is same as MINIO_USE_HTTPS
+#MINIO_REGION = 'us-east-1'  # Default is set to None
+MINIO_ACCESS_KEY = 'Zf57L2ezwNG1fHia7CNc'
+MINIO_SECRET_KEY = 'bSfs7QuMrl4Cq5KeUeXMJZAFxU6GiH2IG3FhhfWe'
+MINIO_USE_HTTPS = False
+MINIO_URL_EXPIRY_HOURS = timedelta(days=1)  # Default is 7 days (longest) if not defined
+#MINIO_CONSISTENCY_CHECK_ON_START = True
+MINIO_PRIVATE_BUCKETS = [
+    'videoshots',
+]
+# MINIO_PUBLIC_BUCKETS = [
+#     'django-backend-dev-public',
+# ]
+MINIO_POLICY_HOOKS: List[Tuple[str, dict]] = []
+MINIO_MEDIA_FILES_BUCKET = 'videoshots'  # replacement for MEDIA_ROOT
+# MINIO_STATIC_FILES_BUCKET = 'my-static-files-bucket'  # replacement for STATIC_ROOT
+MINIO_BUCKET_CHECK_ON_SAVE = True  # Default: True // Creates bucket if missing, then save
 
 ROOT_URLCONF = 'videoshotsBackend.urls'
 
@@ -134,5 +157,5 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+#MEDIA_URL = '/media/'
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {ListingComponent} from "./listing/listing.component";
+import {ListingComponent} from "./components/listing/listing.component";
 
 @Component({
   selector: 'app-root',

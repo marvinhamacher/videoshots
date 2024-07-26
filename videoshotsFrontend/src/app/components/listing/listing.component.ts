@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ListingService} from "./listing.service";
+import {ListingService} from "../../services/listing.service";
 import {JsonPipe, NgForOf} from "@angular/common";
 import {Observable} from "rxjs";
 

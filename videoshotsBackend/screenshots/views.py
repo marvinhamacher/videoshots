@@ -5,7 +5,7 @@ from rest_framework.generics import UpdateAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Screenshot
-from screenshots.serializers import ScreenshotSerializer
+from .serializers import ScreenshotSerializer
 
 
 # Create your views here.
@@ -17,8 +17,6 @@ class ListScreenshots(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 class AddScreenshots(APIView):
-    def get(self,request,format=None):
-        return Response(status=200)
     def post(self,request, format=None):
         serializer = ScreenshotSerializer(data=request.data)
         print(request.data)
