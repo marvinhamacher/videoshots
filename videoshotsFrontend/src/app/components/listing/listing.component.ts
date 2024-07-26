@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {ListingService} from "../../services/listing.service";
-import {JsonPipe, NgForOf} from "@angular/common";
+import {CommonModule, JsonPipe, NgForOf, NgIf} from "@angular/common";
 import {Observable} from "rxjs";
+import {ScreenshotModel} from "../../models/ScreenshotModel";
 
 @Component({
   selector: 'app-listing',
   standalone: true,
   imports: [
     NgForOf,
+    NgIf,
+    CommonModule,
     JsonPipe
   ],
   templateUrl: './listing.component.html',
@@ -16,17 +19,13 @@ import {Observable} from "rxjs";
 
 
 export class ListingComponent implements OnInit{
-  content!: any[];
+  screenshots: ScreenshotModel[];
   constructor(private service: ListingService) {}
   ngOnInit(): void {
     this.service.getData().subscribe(
-      (response: any[]) => {
-        this.content = response;
-      },
-      (error: any) => {
-        console.error('Fehler bei der datenaufbereitung:', error);
-      }
-    )
+      ((data: ScreenshotModel[]) => {
+        this.screenshots = data;
+      }));
   }
 
 }

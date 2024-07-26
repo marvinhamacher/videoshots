@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Screenshot
 from .serializers import ScreenshotSerializer
-
+from django_minio_backend import MinioBackend
 
 # Create your views here.
 
