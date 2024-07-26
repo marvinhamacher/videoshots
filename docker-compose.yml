@@ -12,7 +12,7 @@ services:
       - MINIO_ROOT_PASSWORD=adminadmin
     command: server /data --console-address ":9001"
   backend:
-    #image: videoshotsBackend
+    image: videoshotsbackend
     container_name: backend
     ports:
       - 8000:8000   
@@ -21,7 +21,7 @@ services:
       dockerfile: Dockerfile
 
   frontend:
-    #image: videoshotsFrontend
+    image: videoshotsfrontend
     container_name: frontend
     ports:
       - 4200:4200
