@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {ListingService} from "../../services/listing.service";
-import {CommonModule, JsonPipe, NgForOf, NgIf} from "@angular/common";
-import {Observable} from "rxjs";
+import {CommonModule, JsonPipe, NgIf} from "@angular/common";
 import {ScreenshotModel} from "../../models/ScreenshotModel";
+import {MatCardModule} from '@angular/material/card'
+import {MatButton} from "@angular/material/button";
 
 @Component({
   selector: 'app-listing',
   standalone: true,
   imports: [
-    NgForOf,
-    NgIf,
     CommonModule,
-    JsonPipe
+    JsonPipe,
+    MatCardModule,
+    MatButton,
   ],
   templateUrl: './listing.component.html',
   styleUrl: './listing.component.css'

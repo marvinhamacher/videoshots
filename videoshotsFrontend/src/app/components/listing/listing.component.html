@@ -1,8 +1,12 @@
-<div *ngFor="let item of screenshots">
-    <div>
-      <h1>Title: {{item.title}}</h1>
-      <p> Description: {{item.description}}</p>
-      <img class="w-full" *ngIf="item.screenshot" [src]="item.screenshot" alt="kaputt :(">
-      <p> {{item.screenshot}}</p>
-    </div>
+<div *ngFor="let item of screenshots" id="imagecontainer">
+  <mat-card>
+      <mat-card-header>
+        <mat-card-title>Title: {{item.title}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p> Description: {{item.description}}</p>
+      </mat-card-content>
+      <img mat-card-image class="w-full" *ngIf="item.screenshot" [src]="item.screenshot" alt="kaputt :(" style="height: 200px; width: 200px">
+      <button mat-button>DELETE</button>
+  </mat-card>
 </div>
