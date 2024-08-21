@@ -1,0 +1,26 @@
+<mat-card class="form-card">
+  <mat-card-header>
+    <mat-card-title>{{data.title}}</mat-card-title>
+
+  </mat-card-header>
+  <mat-card-content>
+    <div class="formatted-field-box">
+      <mat-form-field>
+        <input matNativeControl matInput placeholder="Titel" [(ngModel)]="title"/>
+      </mat-form-field>
+      <div id="allignmentspacer"></div>
+      <mat-form-field>
+        <input matNativeControl matInput placeholder="Beschreibung" [(ngModel)]="description"/>
+      </mat-form-field>
+    </div>
+    <div class="image-upload">
+      <img [src]="source" style="max-width:300px;max-height:300px"/>
+      <input name="imageUrl" type="file" accept="image/*" (change)="imageChangeEvent($event)"/>
+    </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Nein</button>
+    <button mat-button (click)="onYesClick()">Ja</button>
+
+  </div>
+  </mat-card-content>
+</mat-card>

@@ -1,3 +1,21 @@
-<app-listing>
+<div id="home">
+    <mat-card id="outer">
+          <mat-card-header>
+            <mat-card-title>Videoshots</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+          <mat-card id="inner">
+            <mat-card-content>
+              <app-listing></app-listing>
+            </mat-card-content>
 
-</app-listing>
+          </mat-card>
+          </mat-card-content>
+    </mat-card>
+
+         <div class="floating">
+            <button mat-fab (click)="openDialog()">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+</div>
