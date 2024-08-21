@@ -1,5 +1,6 @@
 
-export interface ScreenshotModel {
+export interface ScreenshotEditing {
+  isEdit: boolean
   id: number
   screenshot : String
   title: String

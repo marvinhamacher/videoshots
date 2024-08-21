@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from rest_framework import status
-from rest_framework.generics import UpdateAPIView
+from rest_framework.generics import UpdateAPIView, DestroyAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Screenshot
@@ -19,7 +19,6 @@ class ListScreenshots(APIView):
 class AddScreenshots(APIView):
     def post(self,request, format=None):
         serializer = ScreenshotSerializer(data=request.data)
-        print(request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data,status=200)
@@ -29,7 +28,6 @@ class AddScreenshots(APIView):
 class UpdateScreenshots(UpdateAPIView):
     serializer_class = ScreenshotSerializer
     def put(self, request, id):
-        print(request.data)
         if request.method == "PUT":
             instance = get_object_or_404(Screenshot, id=id)
             serializer = self.get_serializer(instance, data=request.data)
@@ -39,8 +37,8 @@ class UpdateScreenshots(UpdateAPIView):
             else:
                 return Response(422)
     def patch(self, request, id):
-        print(request.data)
         if request.method == "PATCH":
+            print("status geht")
             instance = get_object_or_404(Screenshot, id=id)
             serializer = self.get_serializer(instance, data=request.data, partial=True)
             if serializer.is_valid():
@@ -49,4 +47,13 @@ class UpdateScreenshots(UpdateAPIView):
             else:
                 return Response(422)
 
+
+class DeleteScreenshot(DestroyAPIView):
+    def delete(self, request, id):
+        if request.method == "DELETE":
+            instance = get_object_or_404(Screenshot, id=id)
+            instance.delete()
+            return Response(status=200)
+        else:
+            return Response(422)
 

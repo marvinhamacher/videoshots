@@ -8,10 +8,7 @@ class ScreenshotSerializer(serializers.ModelSerializer):
     screenshot = Base64ImageField()
     class Meta:
         model = Screenshot
-        fields = ['screenshot',
-                  'title',
-                  'description',
-                  'publication_date']
+        fields = '__all__'
 
     def create(self, validated_data):
         # Override create method to handle base64 image data

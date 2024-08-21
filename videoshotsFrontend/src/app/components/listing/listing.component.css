@@ -1,24 +1,74 @@
-#imagecontainer {
-  margin: 0;
+#Imagecontainer {
+  height: 90%;
+  margin: 0 auto;
   font-family: Roboto, sans-serif;
-}
-mat-card {
-  margin: 16px;
-  width: 300px;
-  height: 300px;
+  flex-wrap: wrap;
+  gap: 1%;
+  justify-content: flex-start; /* Align items horizontally */
 }
 
-mat-card-title {
-  font-size: 1.2em;
-  font-weight: bold;
+.Image-Card {
+  margin: 1.6%;
+  width: 29%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Ensure content is centered vertically */
 }
 
-mat-card-content p {
-  font-size: 1em;
-}
-image {
-  width: 200px;
-  height: 200px;
-
+.image-div {
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
 }
 
+.image-div img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+
+.Image-Card:hover .fadeable {
+  opacity: 1;
+}
+
+
+
+.fadeable{
+  box-sizing: border-box;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.text-overlay, .icons-overlay{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  color: white;
+  text-align: center;
+  z-index: 2;
+}
+
+.icons-overlay {
+  gap: 2%;
+  bottom: 10%;
+}
+
+
+.dfw100{
+  display: flex;
+  width: 100%;
+}

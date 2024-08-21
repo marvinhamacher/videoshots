@@ -1,12 +1,29 @@
-<div *ngFor="let item of screenshots" id="imagecontainer">
-  <mat-card>
-      <mat-card-header>
-        <mat-card-title>Title: {{item.title}}</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p> Description: {{item.description}}</p>
-      </mat-card-content>
-      <img mat-card-image class="w-full" *ngIf="item.screenshot" [src]="item.screenshot" alt="kaputt :(" style="height: 200px; width: 200px">
-      <button mat-button>DELETE</button>
+<div id="Imagecontainer" class="dfw100">
+  <mat-card *ngFor="let item of screenshots" class="Image-Card">
+    <mat-card-content>
+      <div class="image-div dfw100">
+        <img mat-card-image class="image" *ngIf="item.screenshot" [src]="item.screenshot" alt="kaputt :(">
+      </div>
+      <!-- Fadeable background and overlays -->
+      <div class="fadeable dfw100">
+        <!-- Text container -->
+        <div class="text-container">
+          {{ item.title }}
+        </div>
+        <!-- Icons container -->
+        <div class="icons-container">
+          <button (click)="openInfoDialog(item)">
+            <mat-icon>info</mat-icon>
+          </button>
+          <button (click)="openEditDialog(item)">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button (click)="openDeleteDialog(item.title,item.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-card-content>
   </mat-card>
 </div>

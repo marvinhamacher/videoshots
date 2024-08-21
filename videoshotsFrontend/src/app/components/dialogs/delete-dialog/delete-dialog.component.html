@@ -1,0 +1,13 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Löschen</mat-card-title>
+
+  </mat-card-header>
+  <mat-card-content>
+  <div> sind sie sich sicher das sie {{data.title}} löschen wollen</div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Nein</button>
+    <button mat-button (click)="onYesClick()">Ja</button>
+  </div>
+  </mat-card-content>
+</mat-card>

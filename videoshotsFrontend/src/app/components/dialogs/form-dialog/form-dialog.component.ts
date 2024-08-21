@@ -9,6 +9,9 @@ import {MatInput} from "@angular/material/input";
 import {ScreenshotAdding} from "../../../models/ScreenshotAdding";
 import {UploadService} from "../../../services/upload.service";
 import {EmptyError} from "rxjs";
+import {ScreenshotEditing} from "../../../models/ScreenshotEditing";
+import {EditService} from "../../../services/edit.service";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-form-dialog',
@@ -23,7 +26,8 @@ import {EmptyError} from "rxjs";
     MatDialogClose,
     FormsModule,
     MatFormField,
-    MatInput
+    MatInput,
+    NgIf
   ],
   templateUrl: './form-dialog.component.html',
   styleUrl: './form-dialog.component.css'
@@ -31,7 +35,8 @@ import {EmptyError} from "rxjs";
 export class FormDialogComponent {
    constructor(
     public dialogReference: MatDialogRef<FormDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: ScreenshotAdding,
+    @Inject(MAT_DIALOG_DATA) public data: ScreenshotEditing,
+    private editService: EditService,
     private uploadService: UploadService) { }
     onNoClick(): void {
      this.dialogReference.close();
@@ -40,8 +45,10 @@ export class FormDialogComponent {
     onYesClick(): void{
      let data = this.getData();
      if(data.length > 0){
-       if(this.data.isedit){
-       //patch und put
+       if(this.data.isEdit){
+       this.editService.patchData(this.data.id,data[0],data[1],data[2]).subscribe(() => {
+         console.log("updated "+ this.data.id)
+       })
       } else {
          this.uploadService.addData(data[0],data[1],data[2]).subscribe(() => {
            console.log("called")
