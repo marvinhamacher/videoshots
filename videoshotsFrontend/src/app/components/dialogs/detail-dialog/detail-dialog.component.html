@@ -1,0 +1,20 @@
+<div class="form-card">
+    <mat-card class="left-column">
+      <mat-card-content>
+        <div>
+          <img mat-card-image *ngIf="data.screenshot" [src]="data.screenshot" alt="kaputt :(">
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="right-column">
+      <mat-card-header>
+        <mat-card-title>{{data.title}}</mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <p class="bigtext">{{data.description}}</p>
+        <mat-divider></mat-divider>
+        <p>Hochgeladen am {{data.publication_date}}</p>
+      </mat-card-content>
+    </mat-card>
+</div>
